@@ -1,0 +1,20 @@
+﻿@page "/platforms"
+
+@using HwReservation.Client.HttpServices;
+@using HwReservation.Shared.DTOs
+
+@inject HttpClient Http
+@inject IPlatformService _platformService
+
+<PageTitle>Platforms</PageTitle>
+
+<h1>Platforms</h1>
+
+@code {
+    private List<PlatformDto> _platforms;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _platforms = await _platformService.GetAllPlatforms();
+    }
+}
